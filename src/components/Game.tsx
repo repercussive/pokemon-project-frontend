@@ -1,6 +1,6 @@
-import { capitalize } from '@src/helpers/capitalize'
 import { useFetchRandomQuestion as useFetchRandomQuestion } from '@src/hooks/useFetchRandomQuestion'
 import { useVerifyAnswer } from '@src/hooks/useVerifyAnswer'
+import { formatPokemonName } from '@src/helpers/formatPokemonName'
 
 function Game() {
   const fetchRandomQuestion = useFetchRandomQuestion()
@@ -32,14 +32,14 @@ function Game() {
           })}
           disabled={!verifyAnswer.isIdle}
         >
-          {capitalize(pokemonName)}
+          {formatPokemonName(pokemonName)}
         </button>
       ))}
 
       {verifyAnswer.isSuccess && <>
         <p>
           {verifyAnswer.data.isCorrect ? 'Correct!' : 'Not quite!'}
-          {' '}<br />It's <b>{capitalize(verifyAnswer.data.correctPokemonName)}</b>.
+          {' '}<br />It's <b>{formatPokemonName(verifyAnswer.data.correctPokemonName)}</b>.
         </p>
         <button onClick={generateNextQuestion}>Next question</button>
       </>}
