@@ -4,7 +4,8 @@ import { AnswerResult, MultipleChoiceQuestion } from './_types'
 export const api = {
   fetchRandomQuestion: async (): Promise<MultipleChoiceQuestion> => {
     const response = await fetch(API_RANDOM_QUESTION)
-    return await response.json()
+    // TODO: validate question data
+    return (await response.json()) as MultipleChoiceQuestion
   },
 
   verifyAnswer: async (correctPokemonId: number, guessedPokemonName: string): Promise<AnswerResult> => {
@@ -13,7 +14,8 @@ export const api = {
       'guessed_pokemon_name': guessedPokemonName
     }).toString()
     
-    const response = await await fetch(`${API_VERIFY_ANSWER}?${urlParams}`)
-    return await response.json()
+    const response = await fetch(`${API_VERIFY_ANSWER}?${urlParams}`)
+    // TODO: validate result
+    return (await response.json()) as AnswerResult
   }
 }
