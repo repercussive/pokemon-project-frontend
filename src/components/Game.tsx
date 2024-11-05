@@ -1,6 +1,7 @@
 import { useFetchRandomQuestion as useFetchRandomQuestion } from '@src/hooks/useFetchRandomQuestion'
 import { useVerifyAnswer } from '@src/hooks/useVerifyAnswer'
 import { formatPokemonName } from '@src/helpers/formatPokemonName'
+import PokemonImage from '@src/components/PokemonImage'
 
 function Game() {
   const fetchRandomQuestion = useFetchRandomQuestion()
@@ -21,7 +22,10 @@ function Game() {
 
   return (
     <div>
-      <img src={fetchRandomQuestion.data.correctPokemonImageUrl} alt="An unknown Pokémon" />
+      <PokemonImage
+        imageUrl={fetchRandomQuestion.data.correctPokemonImageUrl}
+        visible={!verifyAnswer.isIdle}
+      />
 
       {fetchRandomQuestion.data.pokemonNameOptions.map((pokemonName, index) => (
         <button

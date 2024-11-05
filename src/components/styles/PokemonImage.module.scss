@@ -1,0 +1,11 @@
+.image {
+  width: 100px;
+  height: 100px;
+  display: block;
+  filter: brightness(0);
+
+  &[data-visible=true] {
+    filter: brightness(1);
+    transition: filter 1.25s;
+  }
+}
