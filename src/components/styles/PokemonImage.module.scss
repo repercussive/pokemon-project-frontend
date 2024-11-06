@@ -3,16 +3,17 @@
 
 .container {
   position: relative;
+  width: 200px;
+  height: 200px;
 
   img {
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    width: 200px;
-    height: 200px;
     display: block;
     font-size: 0;
-    opacity: 0;
-    padding: 5px;
     z-index: 1;
+    opacity: 0;
     filter: contrast(0);
 
     &[data-is-revealed=true] {
@@ -28,11 +29,19 @@
   // Gradient background
   div {
     position: absolute;
-    bottom: 0;
-    width: 200px;
-    height: 200px;
+    top: 0;
+    width: 100%;
+    height: 100%;
     background: none;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(148, 187, 233, 0) 60%);
     border-radius: 50%;
+  }
+
+  &::after {
+    @include util.default-pseudo;
+    background-color: var(--color-bg);
+    width: 16px;
+    height: 16px;
+    z-index: 2;
   }
 }

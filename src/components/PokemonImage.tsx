@@ -2,7 +2,7 @@ import styles from '@components/styles/PokemonImage.module.scss'
 import { useEffect, useState } from 'react'
 
 type PokemonImageProps = {
-  imageUrl: string | null,
+  imageUrl: string | null | undefined,
   isRevealed: boolean
 }
 
@@ -19,7 +19,7 @@ function PokemonImage({ imageUrl, isRevealed }: PokemonImageProps) {
         src={imageUrl ?? ''}
         data-is-revealed={isRevealed}
         data-is-loaded={isLoaded}
-        onLoad={() => setIsLoaded(true)}
+        onLoad={() => setIsLoaded(true) }
         alt="an unknown Pokémon"
       />
       <div role="presentation" />
