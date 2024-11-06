@@ -30,5 +30,5 @@
       "@tests-root/*": ["./tests/*"]
     }
   },
-  "include": ["tests", "vite.config.ts"]
+  "include": ["tests", "vite.config.ts", "typings.d.ts"]
 }

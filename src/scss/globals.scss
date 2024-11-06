@@ -1,0 +1,49 @@
+@use 'sass:color';
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap');
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('assets/fonts/WorkSans-Subset.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 1 999;
+  font-display: swap;
+}
+
+$color-accent: #5ea6ac;
+$color-bg: #1a1b1b;
+
+:root {
+  font-family: sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  // variables
+  --radius-default: 4px;
+  --color-text: white;
+  --color-bg: #{$color-bg};
+  --color-accent: #{$color-accent};
+  --color-text-accent: #{color.scale($color-accent, $lightness: 40%, $saturation: 25%)};
+  --color-button-border: #{color.scale($color-accent, $saturation: -80%)};
+  --color-button-border-highlight: #{color.scale($color-accent, $lightness: 75%)};
+  --color-button-bg: #{color.scale($color-bg, $lightness: 6%)};
+  --color-success: rgb(110, 202, 110);
+  --color-failure: rgb(224, 145, 102);
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  margin: 0.75rem;
+}
+
+div#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header + *:not(div) {
+  margin-top: 1.5rem;
+}

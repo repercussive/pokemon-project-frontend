@@ -1,0 +1,29 @@
+@use 'sass:color';
+
+.header {
+  position: relative;
+  text-align: center;
+  padding-block: 0.75rem;
+  padding-inline: 1rem;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.097);
+
+  h1 {
+    font-weight: 500;
+    font-size: 1.75rem;
+
+    span {
+      display: inline-block;
+      padding-inline: 0.25rem;
+    }
+
+    span:first-of-type {
+      transform: rotate(-3deg);
+    }
+
+    span:last-of-type {
+      transform: rotate(3deg);
+      color: rgb(238, 238, 93);
+    }
+  }
+}

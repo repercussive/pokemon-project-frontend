@@ -1,0 +1,7 @@
+@mixin default-pseudo {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  content: "";
+  z-index: -1; 
+}

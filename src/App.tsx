@@ -1,9 +1,10 @@
-import Game from './components/Game'
+import MainHeader from '@src/components/MainHeader'
+import Game from '@components/Game'
 
 function App() {
   return (
     <>
-      <h1>Who's That Pokémon?</h1>
+      <MainHeader />
       <Game />
     </>
   )

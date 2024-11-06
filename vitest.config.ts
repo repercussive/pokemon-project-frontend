@@ -5,5 +5,12 @@ export default defineConfig({
   test: {
     environment: 'jsdom'
   },
-  plugins: [tsconfigPaths()]
+  plugins: [tsconfigPaths()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern'
+      }
+    }
+  }
 })

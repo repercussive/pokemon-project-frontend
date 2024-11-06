@@ -1,11 +1,13 @@
 .image {
-  width: 100px;
-  height: 100px;
+  pointer-events: none;
+  width: 200px;
+  height: 200px;
+  padding: 15px;
   display: block;
-  filter: brightness(0);
+  filter: contrast(0);
 
   &[data-visible=true] {
-    filter: brightness(1);
+    filter: contrast(1);
     transition: filter 1.25s;
   }
 }
