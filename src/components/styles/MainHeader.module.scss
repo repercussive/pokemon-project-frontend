@@ -23,7 +23,7 @@
 
     span:last-of-type {
       transform: rotate(3deg);
-      color: rgb(238, 238, 93);
+      color: var(--color-accent);
     }
   }
 }

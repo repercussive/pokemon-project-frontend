@@ -2,14 +2,14 @@ import { useFetchRandomQuestion as useFetchRandomQuestion } from '@hooks/useFetc
 import { useVerifyAnswer } from '@hooks/useVerifyAnswer'
 import { formatPokemonName } from '@helpers/formatPokemonName'
 import { useScoreStore } from '@stores/useScoreStore'
+import { useShallow } from 'zustand/shallow'
 import PokemonImage from '@components/PokemonImage'
 import Button from '@components/Button'
-import styles from '@components/styles/Game.module.scss'
 import AnswerResultMessage from '@components/AnswerResultMessage'
 import ScoreDisplay from '@src/components/ScoreDisplay'
-import { useShallow } from 'zustand/shallow'
+import styles from '@components/styles/GameView.module.scss'
 
-function Game() {
+function GameView() {
   // Score state
   const { incrementScore, incrementMistakes, score, targetScore } = useScoreStore(useShallow((state) => ({
     incrementScore: state.incrementScore,
@@ -18,7 +18,7 @@ function Game() {
     targetScore: state.targetScore
   })))
   
-  // Mutations
+  // Queries & mutations
   const fetchRandomQuestion = useFetchRandomQuestion()
   const verifyAnswer = useVerifyAnswer({
     onCorrectAnswer: incrementScore,
@@ -26,15 +26,10 @@ function Game() {
   })
   
   const generateNextQuestion = () => {
-    fetchRandomQuestion.mutate()
+    fetchRandomQuestion.refetch()
     verifyAnswer.reset()
   }
 
-  if (fetchRandomQuestion.isIdle) {
-    return <Button onClick={generateNextQuestion}>Start!</Button>
-  }
-
-  // if (fetchRandomQuestion.isPending) return <p className={styles.loading}>. . .</p>
   if (fetchRandomQuestion.error) return `Error generating question: ${fetchRandomQuestion.error.message}`
   if (verifyAnswer.error) return `Error verifying answer: ${verifyAnswer.error.message}`
 
@@ -43,13 +38,13 @@ function Game() {
       <ScoreDisplay />
 
       <PokemonImage
-        imageUrl={fetchRandomQuestion.data?.correctPokemonImageUrl ?? null}
+        imageUrl={fetchRandomQuestion.isFetching ? null : fetchRandomQuestion.data?.correctPokemonImageUrl}
         isRevealed={!verifyAnswer.isIdle}
       />
 
       <div>
-        {fetchRandomQuestion.isPending && Array.from({ length: 4 }).map((_, i) => <Button disabled key={i}>...</Button>)}
-        {fetchRandomQuestion.isSuccess && fetchRandomQuestion.data.pokemonNameOptions.map((pokemonName, index) => (
+        {fetchRandomQuestion.isFetching && Array.from({ length: 4 }).map((_, i) => <Button disabled key={i} />)}
+        {(!fetchRandomQuestion.isFetching && fetchRandomQuestion.isSuccess) && fetchRandomQuestion.data.pokemonNameOptions.map((pokemonName, index) => (
           <Button
             key={index}
             onClick={() => verifyAnswer.mutate({
@@ -73,4 +68,4 @@ function Game() {
   )
 }
 
-export default Game
+export default GameView

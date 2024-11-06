@@ -10,7 +10,7 @@
   font-display: swap;
 }
 
-$color-accent: #5ea6ac;
+$color-button-base: #5ea6ac;
 $color-bg: #1a1b1b;
 
 :root {
@@ -22,11 +22,10 @@ $color-bg: #1a1b1b;
   --radius-default: 4px;
   --color-text: white;
   --color-bg: #{$color-bg};
-  --color-accent: #{$color-accent};
-  --color-text-accent: #{color.scale($color-accent, $lightness: 40%, $saturation: 25%)};
-  --color-button-border: #{color.scale($color-accent, $saturation: -80%)};
-  --color-button-border-highlight: #{color.scale($color-accent, $lightness: 75%)};
+  --color-button-border: #{color.scale($color-button-base, $saturation: -80%)};
+  --color-button-border-highlight: #{color.scale($color-button-base, $lightness: 75%)};
   --color-button-bg: #{color.scale($color-bg, $lightness: 6%)};
+  --color-accent: rgb(238, 238, 93);
   --color-success: rgb(110, 202, 110);
   --color-failure: rgb(224, 145, 102);
 }

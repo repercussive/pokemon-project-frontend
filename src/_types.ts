@@ -1,3 +1,5 @@
+export type View = 'intro' | 'game' | 'victory'
+
 export type MultipleChoiceQuestion = {
   correctPokemonId: number,
   correctPokemonImageUrl: string,
