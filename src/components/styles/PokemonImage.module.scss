@@ -1,14 +1,38 @@
-.image {
-  pointer-events: none;
-  width: 200px;
-  height: 200px;
-  padding: 15px;
-  display: block;
-  font-size: 0;
-  filter: contrast(0);
+@use '/src/scss/animations.scss';
+@use '/src/scss/util.scss';
 
-  &[data-visible=true] {
-    filter: contrast(1);
-    transition: filter 1.25s;
+.container {
+  position: relative;
+
+  img {
+    pointer-events: none;
+    width: 200px;
+    height: 200px;
+    display: block;
+    font-size: 0;
+    opacity: 0;
+    padding: 5px;
+    z-index: 1;
+    filter: contrast(0);
+
+    &[data-is-revealed=true] {
+      filter: contrast(1);
+      transition: filter 0.75s ease-out;
+    }
+
+    &[data-is-loaded=true] {
+      animation: fade-in forwards 0.25s;
+    }
+  }
+
+  // Gradient background
+  div {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 200px;
+    background: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(148, 187, 233, 0) 60%);
+    border-radius: 50%;
   }
 }

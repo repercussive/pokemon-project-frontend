@@ -1,18 +1,29 @@
 import styles from '@components/styles/PokemonImage.module.scss'
+import { useEffect, useState } from 'react'
 
 type PokemonImageProps = {
-  imageUrl: string,
-  visible: boolean
+  imageUrl: string | null,
+  isRevealed: boolean
 }
 
-function PokemonImage({ imageUrl, visible }: PokemonImageProps) {
+function PokemonImage({ imageUrl, isRevealed }: PokemonImageProps) {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    setIsLoaded(false)
+  }, [imageUrl])
+
   return (
-    <img
-      src={imageUrl}
-      data-visible={visible}
-      alt="an unknown Pokémon"
-      className={styles.image}
-    />
+    <div className={styles.container}>
+      <img
+        src={imageUrl ?? ''}
+        data-is-revealed={isRevealed}
+        data-is-loaded={isLoaded}
+        onLoad={() => setIsLoaded(true)}
+        alt="an unknown Pokémon"
+      />
+      <div role="presentation" />
+    </div>
   )
 }
 

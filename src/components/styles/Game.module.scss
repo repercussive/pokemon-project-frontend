@@ -1,14 +1,11 @@
-@use '/src/scss/animations.scss';
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1rem;
 
   img, button {
     min-width: 10rem;
-    opacity: 0;
-    animation: fade-in forwards 0.4s;
   }
 
   // Name options container
