@@ -14,5 +14,8 @@ export default defineConfig({
         api: 'modern'
       }
     }
+  },
+  test: {
+    environment: 'jsdom'
   }
 })
