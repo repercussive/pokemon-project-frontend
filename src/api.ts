@@ -6,7 +6,7 @@ export const api = {
     const response = await fetch(API_RANDOM_QUESTION)
 
     if (!response.ok) {
-      const errorData = await response.json()
+      const errorData = (await response.json()) as Record<string, string>
       throw new Error(errorData.message || "Failed to fetch question data")
     }
 
@@ -22,7 +22,7 @@ export const api = {
     const response = await fetch(`${API_VERIFY_ANSWER}?${urlParams}`)
     
     if (!response.ok) {
-      const errorData = await response.json()
+      const errorData = (await response.json()) as Record<string, string>
       throw new Error(errorData.message || "Failed to verify answer")
     }
 
