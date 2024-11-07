@@ -1,5 +1,18 @@
+@use '/src/scss/util';
+
 .container {
   max-width: 40ch;
+  
+  img {
+    margin: auto;
+    width: 125px;
+    margin-bottom: 1rem;
+
+    @media screen and (min-width: util.$breakpoint-small) {
+      margin-bottom: 1.5rem;
+      width: 175px;
+    }
+  }
 
   h2 {
     color: var(--color-accent);

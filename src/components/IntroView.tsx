@@ -8,6 +8,7 @@ function IntroView() {
 
   return (
     <div className={styles.container}>
+      <img src="/assets/images/pikachu-wave.webp" alt="Pikachu waving" />
       <InfoSection>
         <h2>Get ready to play!</h2>
         <ul>
