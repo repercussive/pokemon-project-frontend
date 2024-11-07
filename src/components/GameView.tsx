@@ -66,7 +66,7 @@ function GameView() {
       </div>
 
       {verifyAnswer.isSuccess && <>
-        <AnswerResultMessage {...verifyAnswer.data} />
+        <AnswerResultMessage isCorrect={verifyAnswer.data.isCorrect} correctPokemonName={verifyAnswer.data.correctPokemonName} />
         {score >= targetScore
           ? <Button onClick={() => setView('victory')}>Finish</Button>
           : <Button onClick={generateNextQuestion}>Next question</Button>}
