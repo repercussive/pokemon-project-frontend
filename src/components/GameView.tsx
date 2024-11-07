@@ -38,8 +38,6 @@ function GameView() {
     return <ErrorMessage error={error} />
   }
 
-  console.log(fetchRandomQuestion.isSuccess)
-
   return (
     <div className={styles.container}>
       <ScoreDisplay />
@@ -51,9 +49,9 @@ function GameView() {
 
       <div>
         {fetchRandomQuestion.isFetching && Array.from({ length: 4 }).map((_, i) => <Button disabled key={i} />)}
-        {(!fetchRandomQuestion.isFetching && fetchRandomQuestion.isSuccess) && fetchRandomQuestion.data.pokemonNameOptions.map((pokemonName, index) => (
+        {(!fetchRandomQuestion.isFetching && fetchRandomQuestion.isSuccess) && fetchRandomQuestion.data.pokemonNameOptions.map((pokemonName) => (
           <Button
-            key={index}
+            key={pokemonName}
             onClick={() => verifyAnswer.mutate({
               guessedPokemonName: pokemonName,
               correctPokemonId: fetchRandomQuestion.data.correctPokemonId
