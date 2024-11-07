@@ -1,5 +1,9 @@
+@use "/src/scss/animations.scss";
+
 .container {
   max-width: 40ch;
+  opacity: 0;
+  animation: fade-in forwards 0.4s;
 
   h2 {
     color: var(--color-success);
