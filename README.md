@@ -29,6 +29,8 @@ To run the application in development mode, execute the following command:
 npm run dev
 ```
 
+👉 The application will be exposed on **http://localhost:5173/**
+
 To build a production-ready application bundle, execute the following command:
 
 ```
