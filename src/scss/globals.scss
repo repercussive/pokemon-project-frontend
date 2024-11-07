@@ -42,3 +42,11 @@ div#root {
   flex-direction: column;
   align-items: center;
 }
+
+.success {
+  color: var(--color-success);
+}
+
+.failure {
+  color: var(--color-failure);
+}

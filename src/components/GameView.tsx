@@ -2,29 +2,31 @@ import { useFetchRandomQuestion as useFetchRandomQuestion } from '@hooks/useFetc
 import { useVerifyAnswer } from '@hooks/useVerifyAnswer'
 import { formatPokemonName } from '@helpers/formatPokemonName'
 import { useScoreStore } from '@stores/useScoreStore'
+import { useViewStore } from '@stores/useViewStore'
 import { useShallow } from 'zustand/shallow'
 import PokemonImage from '@components/PokemonImage'
 import Button from '@components/Button'
 import AnswerResultMessage from '@components/AnswerResultMessage'
-import ScoreDisplay from '@src/components/ScoreDisplay'
+import ScoreDisplay from '@components/ScoreDisplay'
 import styles from '@components/styles/GameView.module.scss'
 
 function GameView() {
-  // Score state
+  // App state
   const { incrementScore, incrementMistakes, score, targetScore } = useScoreStore(useShallow((state) => ({
     incrementScore: state.incrementScore,
     incrementMistakes: state.incrementMistakes,
     score: state.score,
     targetScore: state.targetScore
   })))
-  
+  const setView = useViewStore((state) => state.setView)
+
   // Queries & mutations
   const fetchRandomQuestion = useFetchRandomQuestion()
   const verifyAnswer = useVerifyAnswer({
     onCorrectAnswer: incrementScore,
     onIncorrectAnswer: incrementMistakes
   })
-  
+
   const generateNextQuestion = () => {
     fetchRandomQuestion.refetch()
     verifyAnswer.reset()
@@ -60,8 +62,8 @@ function GameView() {
 
       {verifyAnswer.isSuccess && <>
         <AnswerResultMessage {...verifyAnswer.data} />
-        {score >= targetScore 
-          ? <Button>Finish</Button> 
+        {score >= targetScore
+          ? <Button onClick={() => setView('victory')}>Finish</Button>
           : <Button onClick={generateNextQuestion}>Next question</Button>}
       </>}
     </div>

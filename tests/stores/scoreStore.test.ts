@@ -43,3 +43,17 @@ test('Mistakes increment correctly', () => {
 
   expect(scoreStore.current.mistakes).toBe(3)
 })
+
+test('Resetting store store works', () => {
+  const scoreStore = renderUseScoreStore()
+
+  // Diverge from default state
+  act(() => scoreStore.current.incrementScore())
+  act(() => scoreStore.current.incrementMistakes())
+
+  // Reset
+  act(() => scoreStore.current.resetScore())
+
+  expect(scoreStore.current.score).toBe(0)
+  expect(scoreStore.current.mistakes).toBe(0)
+})
