@@ -17,7 +17,9 @@ function App() {
   return (
     <>
       <MainHeader />
-      {views[currentView]}
+      <main>
+        {views[currentView]}
+      </main>
     </>
   )
 }

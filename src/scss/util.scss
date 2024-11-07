@@ -1,3 +1,5 @@
+$breakpoint-small: 600px;
+
 @mixin default-pseudo {
   pointer-events: none;
   position: absolute;

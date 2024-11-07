@@ -18,7 +18,6 @@ $color-bg: #1a1b1b;
   line-height: 1.5;
   font-weight: 400;
 
-  // variables
   --radius-default: 4px;
   --color-text: white;
   --color-bg: #{$color-bg};
@@ -34,7 +33,12 @@ body {
   font-family: 'Work Sans', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
-  margin: 0.75rem;
+  margin: 0;
+}
+
+main {
+  margin-inline: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 div#root {
