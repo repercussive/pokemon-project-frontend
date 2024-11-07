@@ -1,0 +1,49 @@
+@use "/src/scss/util";
+@use "/src/scss/animations";
+
+.container {
+  opacity: 0;
+  animation: fade-in forwards 0.4s;
+
+  & > div {
+    margin-bottom: 1.5rem;
+    max-width: 32ch;
+    border-radius: var(--radius-default);
+    border: solid 2px var(--color);
+    position: relative;
+    --color: var(--color-failure);
+  
+    p {
+      padding-inline: 0.75rem;
+      margin-bottom: 0.5rem;
+
+      span {
+        color: var(--color);
+        font-weight: 500;
+      }
+  
+      &:first-of-type {
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        padding-block: 0.5rem;
+        font-size: 1.15rem;
+        border-bottom: solid 2px var(--color);
+        position: relative;
+        font-weight: 550;
+  
+        &::after {
+          @include util.default-pseudo;
+          background-color: var(--color);
+          opacity: 0.3;
+        }
+      }
+
+    }
+  }
+
+  button {
+    display: block;
+    margin: auto;
+  }
+
+}

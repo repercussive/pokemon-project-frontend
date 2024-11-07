@@ -4,7 +4,12 @@ import { AnswerResult, MultipleChoiceQuestion } from './_types'
 export const api = {
   fetchRandomQuestion: async (): Promise<MultipleChoiceQuestion> => {
     const response = await fetch(API_RANDOM_QUESTION)
-    // TODO: validate question data
+
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error(errorData.message || "Failed to fetch question data")
+    }
+
     return (await response.json()) as MultipleChoiceQuestion
   },
 
@@ -13,9 +18,14 @@ export const api = {
       'correct_pokemon_id': correctPokemonId.toString(),
       'guessed_pokemon_name': guessedPokemonName
     }).toString()
-    
+
     const response = await fetch(`${API_VERIFY_ANSWER}?${urlParams}`)
-    // TODO: validate result
+    
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error(errorData.message || "Failed to verify answer")
+    }
+
     return (await response.json()) as AnswerResult
   }
 }

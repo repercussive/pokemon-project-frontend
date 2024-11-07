@@ -7,8 +7,8 @@ import '@src/scss/globals.scss'
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: { retry: 2 },
-    mutations: { retry: 2 }
+    queries: { retry: 0 },
+    mutations: { retry: 0 }
   }
 })
 

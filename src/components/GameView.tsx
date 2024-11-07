@@ -9,6 +9,7 @@ import Button from '@components/Button'
 import AnswerResultMessage from '@components/AnswerResultMessage'
 import ScoreDisplay from '@components/ScoreDisplay'
 import styles from '@components/styles/GameView.module.scss'
+import ErrorMessage from '@src/components/ErrorMessage'
 
 function GameView() {
   // App state
@@ -32,8 +33,12 @@ function GameView() {
     verifyAnswer.reset()
   }
 
-  if (fetchRandomQuestion.error) return `Error generating question: ${fetchRandomQuestion.error.message}`
-  if (verifyAnswer.error) return `Error verifying answer: ${verifyAnswer.error.message}`
+  const error = fetchRandomQuestion.error || verifyAnswer.error
+  if (error) {
+    return <ErrorMessage error={error} />
+  }
+
+  console.log(fetchRandomQuestion.isSuccess)
 
   return (
     <div className={styles.container}>
