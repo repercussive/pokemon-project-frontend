@@ -16,7 +16,7 @@ $color-bg: #1a1b1b;
   --color-button-border: #{color.scale($color-button-base, $saturation: -80%)};
   --color-button-border-highlight: #{color.scale($color-button-base, $lightness: 75%)};
   --color-button-bg: #{color.scale($color-bg, $lightness: 6%)};
-  --color-accent: rgb(238, 238, 93);
+  --color-accent: rgb(238, 224, 68);
   --color-success: rgb(110, 202, 110);
   --color-failure: rgb(224, 145, 102);
 }
