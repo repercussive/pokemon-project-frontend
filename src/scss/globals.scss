@@ -10,7 +10,7 @@ $color-bg: #1a1b1b;
   line-height: 1.5;
   font-weight: 400;
 
-  --radius-default: 4px;
+  --radius-default: 6px;
   --color-text: white;
   --color-bg: #{$color-bg};
   --color-button-border: #{color.scale($color-button-base, $saturation: -80%)};
